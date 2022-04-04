@@ -141,11 +141,24 @@ namespace lr14
         {
             try
             {
-                double x = Convert.ToDouble(toolStripTextBoxX.Text);
-                double y = Convert.ToDouble(toolStripTextBoxY.Text);
-                double z = Convert.ToDouble(toolStripTextBoxZ.Text);
-                double a = Convert.ToDouble(toolStripComboBoxA.SelectedIndex);
-                double b = Convert.ToDouble(toolStripComboBoxB.SelectedIndex);
+                double x=0, y=0, z=0, a=0, b = 0;
+
+                if (sender == toolStripMenuItemCalc) 
+                {
+                    x = Convert.ToDouble(toolStripTextBoxX.Text);
+                    y = Convert.ToDouble(toolStripTextBoxY.Text);
+                    z = Convert.ToDouble(toolStripTextBoxZ.Text);
+                    a = Convert.ToDouble(toolStripComboBoxA.SelectedIndex);
+                    b = Convert.ToDouble(toolStripComboBoxB.SelectedIndex);
+                }
+                else if (sender == toolStripMenuItemCM_Calc)
+                {
+                    x = Convert.ToDouble(toolStripTextBoxCM_X.Text);
+                    y = Convert.ToDouble(toolStripTextBoxCM_Y.Text);
+                    z = Convert.ToDouble(toolStripTextBoxCM_Z.Text);
+                    a = Convert.ToDouble(toolStripComboBoxCM_A.SelectedIndex);
+                    b = Convert.ToDouble(toolStripComboBoxCM_B.SelectedIndex);
+                }
 
                 double res;
                 res = a * x / (b - y) + (b * y + Math.Sin(z*(Math.PI/180)) / (a * x));
