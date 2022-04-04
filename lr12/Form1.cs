@@ -15,6 +15,8 @@ namespace lr12
         public Form1()
         {
             InitializeComponent();
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            MaximizeBox = false;
         }
 
         public void Form1_MouseMove(object sender, MouseEventArgs e)
@@ -36,7 +38,7 @@ namespace lr12
                 f = (double)Cursor.Position.X;
                 b = (double)Cursor.Position.Y;
 
-                double q = Math.Sin(h + (d / Math.Exp(o1))) - o1 + Math.Abs(Math.Sin(f) + Math.Sqrt(Math.Abs(Math.Sin(b))));
+                double q = Math.Sin((h + (d / Math.Exp(o1)))*(Math.PI/180) - o1 + Math.Abs(Math.Sin(f*(Math.PI/180)) + Math.Sqrt(Math.Abs(Math.Sin(b*(Math.PI/180))))));
                 Text = string.Format("Q={0}", q);
             }
             catch (Exception ex)

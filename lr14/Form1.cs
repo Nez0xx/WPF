@@ -12,9 +12,53 @@ namespace lr14
 {
     public partial class Form1 : Form
     {
+        public enum DateTimeFormat
+        {
+            ShowTime,
+            ShowDate
+        }
+
+        DateTimeFormat dtFormat = DateTimeFormat.ShowTime;
+        ToolStripMenuItem currentCheckedItem;
+        ToolStripMenuItem currentCheckedItemTask2;
+
         public Form1()
         {
             InitializeComponent();
+            Text = "Лабораторная работа №14. Пример строки состояния";
+            CenterToScreen();
+            BackColor = Color.CadetBlue;
+            currentCheckedItem = toolStripMenuItemTime;
+            currentCheckedItem.Checked = true;
+
+            currentCheckedItemTask2 = toolStripMenuItemXY;
+            currentCheckedItemTask2.Checked = true;
+        }
+
+        private void timerDateTimeUpdate_Tick(object sender, EventArgs e)
+        {
+            string info = "";
+            if (dtFormat == DateTimeFormat.ShowTime)
+                info = DateTime.Now.ToLongTimeString();
+            else
+                info = DateTime.Now.ToLongDateString();
+            toolStripStatusLabelClock.Text = info;
+        }
+
+        private void toolStripMenuItemDate_Click(object sender, EventArgs e)
+        {
+            currentCheckedItem.Checked = false;
+            dtFormat = DateTimeFormat.ShowDate;
+            currentCheckedItem = toolStripMenuItemDate;
+            currentCheckedItem.Checked = true;
+        }
+
+        private void toolStripMenuItemTime_Click(object sender, EventArgs e)
+        {
+            currentCheckedItem.Checked = false;
+            dtFormat = DateTimeFormat.ShowTime;
+            currentCheckedItem = toolStripMenuItemTime;
+            currentCheckedItem.Checked = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -75,6 +119,56 @@ namespace lr14
             {
                 MessageBox.Show("необходимо ввести целое число от 0 до 255", "Ошибка в задании цвета");
             }
+        }
+
+        private void Form1_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (currentCheckedItemTask2 == toolStripMenuItemXY)
+                toolStripStatusLabelState.Text = string.Format("Координаты курсора равны (х, у): ({0}, {1})", e.X, e.Y);
+            else
+            {
+                try { 
+                    double z = (e.X + e.Y) / Math.Abs(e.Y - e.X);
+                    toolStripStatusLabelState.Text = string.Format("z= {0}", z);
+                }
+                catch {
+                    toolStripStatusLabelState.Text = "Курсор за пределами рабочей области";
+                }
+            }
+        }
+
+        private void toolStripMenuItemCalc_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                double x = Convert.ToDouble(toolStripTextBoxX.Text);
+                double y = Convert.ToDouble(toolStripTextBoxY.Text);
+                double z = Convert.ToDouble(toolStripTextBoxZ.Text);
+                double a = Convert.ToDouble(toolStripComboBoxA.SelectedIndex);
+                double b = Convert.ToDouble(toolStripComboBoxB.SelectedIndex);
+
+                double res;
+                res = a * x / (b - y) + (b * y + Math.Sin(z*(Math.PI/180)) / (a * x));
+                Text = string.Format("Результат выражения: {0}", res);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка");
+            }
+        }
+
+        private void toolStripMenuItemZ_Click(object sender, EventArgs e)
+        {
+            currentCheckedItemTask2.Checked = false;
+            currentCheckedItemTask2 = toolStripMenuItemZ;
+            currentCheckedItemTask2.Checked = true;
+        }
+
+        private void toolStripMenuItemXY_Click(object sender, EventArgs e)
+        {
+            currentCheckedItemTask2.Checked = false;
+            currentCheckedItemTask2 = toolStripMenuItemXY;
+            currentCheckedItemTask2.Checked = true;
         }
     }
 }
