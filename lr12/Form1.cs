@@ -38,7 +38,7 @@ namespace lr12
                 f = (double)Cursor.Position.X;
                 b = (double)Cursor.Position.Y;
 
-                double q = Math.Sin((h + (d / Math.Exp(o1)))*(Math.PI/180) - o1 + Math.Abs(Math.Sin(f*(Math.PI/180)) + Math.Sqrt(Math.Abs(Math.Sin(b*(Math.PI/180))))));
+                double q = Math.Sin((h + (d / Math.Exp(o1)))*(Math.PI/180)) - o1 + Math.Abs(Math.Sin(f*(Math.PI/180)) + Math.Sqrt(Math.Abs(Math.Sin(b*(Math.PI/180)))));
                 Text = string.Format("Q={0}", q);
             }
             catch (Exception ex)
