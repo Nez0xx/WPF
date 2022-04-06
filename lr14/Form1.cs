@@ -25,6 +25,7 @@ namespace lr14
         public Form1()
         {
             InitializeComponent();
+            pictureBox1.Image = Image.FromFile(Application.StartupPath + "\\Screenshot_14.png");
             Text = "Лабораторная работа №14. Пример строки состояния";
             CenterToScreen();
             BackColor = Color.CadetBlue;

@@ -67,10 +67,8 @@ namespace lr14
             this.contextMenuTextBox1 = new System.Windows.Forms.ToolStripTextBox();
             this.contextMenuTextBox2 = new System.Windows.Forms.ToolStripTextBox();
             this.contextMenuTextBox3 = new System.Windows.Forms.ToolStripTextBox();
-            this.timerDateTimeUpdate = new System.Windows.Forms.Timer(this.components);
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripTextBox4 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripTextBoxCM_X = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripTextBoxCM_Y = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripTextBoxCM_Z = new System.Windows.Forms.ToolStripTextBox();
@@ -78,7 +76,9 @@ namespace lr14
             this.toolStripComboBoxCM_B = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItemCM_Calc = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripTextBox4 = new System.Windows.Forms.ToolStripTextBox();
+            this.timerDateTimeUpdate = new System.Windows.Forms.Timer(this.components);
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.MainStatusStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -393,7 +393,7 @@ namespace lr14
             this.toolStripSeparator4,
             this.toolStripMenuItemCM_Calc});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(182, 316);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(182, 294);
             this.contextMenuStrip1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             // 
             // contextMenuComboBox2
@@ -437,36 +437,18 @@ namespace lr14
             this.contextMenuTextBox3.ToolTipText = "Синий";
             this.contextMenuTextBox3.TextChanged += new System.EventHandler(this.toolStripTextBox1_TextChanged);
             // 
-            // timerDateTimeUpdate
-            // 
-            this.timerDateTimeUpdate.Enabled = true;
-            this.timerDateTimeUpdate.Interval = 1000;
-            this.timerDateTimeUpdate.Tick += new System.EventHandler(this.timerDateTimeUpdate_Tick);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
-            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.ImageLocation = "C:\\Users\\retak\\source\\repos\\lr12-21\\lr14\\Screenshot_14.png";
-            this.pictureBox1.Location = new System.Drawing.Point(156, 38);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(583, 457);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
-            // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
             this.toolStripSeparator3.Size = new System.Drawing.Size(178, 6);
+            // 
+            // toolStripTextBox4
+            // 
+            this.toolStripTextBox4.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.toolStripTextBox4.Name = "toolStripTextBox4";
+            this.toolStripTextBox4.ReadOnly = true;
+            this.toolStripTextBox4.Size = new System.Drawing.Size(100, 23);
+            this.toolStripTextBox4.Text = "Задание 1";
             // 
             // toolStripTextBoxCM_X
             // 
@@ -532,13 +514,31 @@ namespace lr14
             this.toolStripMenuItemCM_Calc.Text = "Вычислить";
             this.toolStripMenuItemCM_Calc.Click += new System.EventHandler(this.toolStripMenuItemCalc_Click);
             // 
-            // toolStripTextBox4
+            // timerDateTimeUpdate
             // 
-            this.toolStripTextBox4.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.toolStripTextBox4.Name = "toolStripTextBox4";
-            this.toolStripTextBox4.ReadOnly = true;
-            this.toolStripTextBox4.Size = new System.Drawing.Size(100, 23);
-            this.toolStripTextBox4.Text = "Задание 1";
+            this.timerDateTimeUpdate.Enabled = true;
+            this.timerDateTimeUpdate.Interval = 1000;
+            this.timerDateTimeUpdate.Tick += new System.EventHandler(this.timerDateTimeUpdate_Tick);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ColorDepth = System.Windows.Forms.ColorDepth.Depth8Bit;
+            this.imageList1.ImageSize = new System.Drawing.Size(16, 16);
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.ImageLocation = "";
+            this.pictureBox1.Location = new System.Drawing.Point(156, 38);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(583, 457);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureBox1.TabIndex = 5;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             // 
             // Form1
             // 

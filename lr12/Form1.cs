@@ -17,6 +17,7 @@ namespace lr12
             InitializeComponent();
             this.ClientSize = new System.Drawing.Size(800, 450);
             MaximizeBox = false;
+            pictureBox1.Image = Image.FromFile(Application.StartupPath + "\\Screenshot_12.png");
         }
 
         public void Form1_MouseMove(object sender, MouseEventArgs e)

@@ -17,6 +17,7 @@ namespace lr13
             InitializeComponent();
             this.ClientSize = new System.Drawing.Size(800, 450);
             MaximizeBox = false;
+            pictureBox1.Image = Image.FromFile(Application.StartupPath + "\\Screenshot_13.png");
 
             listBoxR.SelectedIndex = 0;
             listBoxN.SelectedIndex = 0;

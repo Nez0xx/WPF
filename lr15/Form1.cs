@@ -16,6 +16,7 @@ namespace lr15
         {
             InitializeComponent();
             MaximizeBox = false;
+            pictureBox1.Image = Image.FromFile(Application.StartupPath + "\\Screenshot_15.png"); 
         }
 
         private void btnChooseColor_Click(object sender, EventArgs e)

@@ -126,7 +126,7 @@ namespace lr15
             // 
             // pictureBox1
             // 
-            this.pictureBox1.ImageLocation = "C:\\Users\\retak\\source\\repos\\lr12-21\\lr15\\Screenshot_15.png";
+            this.pictureBox1.ImageLocation = "bin\\Debug\\Screenshot_15.png";
             this.pictureBox1.Location = new System.Drawing.Point(126, 291);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(663, 121);
