@@ -42,15 +42,15 @@ namespace lr16
             this.dgvRaw.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRaw.Location = new System.Drawing.Point(12, 12);
             this.dgvRaw.Name = "dgvRaw";
-            this.dgvRaw.Size = new System.Drawing.Size(505, 317);
+            this.dgvRaw.Size = new System.Drawing.Size(596, 317);
             this.dgvRaw.TabIndex = 0;
             // 
             // dgvSummary
             // 
             this.dgvSummary.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSummary.Location = new System.Drawing.Point(523, 12);
+            this.dgvSummary.Location = new System.Drawing.Point(614, 12);
             this.dgvSummary.Name = "dgvSummary";
-            this.dgvSummary.Size = new System.Drawing.Size(409, 317);
+            this.dgvSummary.Size = new System.Drawing.Size(360, 317);
             this.dgvSummary.TabIndex = 1;
             // 
             // btnLoad
@@ -63,6 +63,7 @@ namespace lr16
             this.btnLoad.TabIndex = 2;
             this.btnLoad.Text = "Загрузить данные";
             this.btnLoad.UseVisualStyleBackColor = true;
+            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
             // 
             // openFileDlg
             // 
@@ -72,7 +73,7 @@ namespace lr16
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(944, 380);
+            this.ClientSize = new System.Drawing.Size(986, 380);
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.dgvSummary);
             this.Controls.Add(this.dgvRaw);

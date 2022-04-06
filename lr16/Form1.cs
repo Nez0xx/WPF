@@ -27,42 +27,22 @@ namespace lr16
             Undefined
         }
 
-        public static Building_Type ToBuildingType(String type)
-        {
-            switch (type)
-            {
-                case "Дом": return Building_Type.House;
-                case "Квартира": return Building_Type.Flat;
-                case "Комната": return Building_Type.Room;
-                default: return Building_Type.Undefined;
-            }
-        }
-        public static String ToString(Building_Type type)
-        {
-            switch (type)
-            {
-                case Building_Type.House: return "Дом";
-                case Building_Type.Flat: return "Квартира";
-                case Building_Type.Room: return "Комната";
-                default: return "Не определено";
-            }
-        }
-
         class RawDataItem  
         {
             public Building_Type type { get; set; }
             public int rooms { get; set; }
             public int size { get; set; }
             public long price { get; set; }
-            public double mSqr_price
+            public double mSqr_price 
             {
-                get { return (double)(price / size); }
+                get { return price / (double)size; }
             }
+
         }
         class SummaryDataItem  
         {
-            public int typeSum { get; set; }
-            public Building_Type type { get; set; }
+            public Building_Type bType { get; set; }
+            public long typeSum { get; set; }
         }
 
         interface DataInterface
@@ -70,8 +50,32 @@ namespace lr16
             List<RawDataItem> GetRawData();
             List<SummaryDataItem> GetSummaryData();
         }
+        
+        class Utils
+        {
+            public  Building_Type ToBuildingType(String type)
+            {
+                switch (type)
+                {
+                    case "Дом": return Building_Type.House;
+                    case "Квартира": return Building_Type.Flat;
+                    case "Комната": return Building_Type.Room;
+                    default: return Building_Type.Undefined;
+                }
+            }
+            public  String ToString(Building_Type type)
+            {
+                switch (type)
+                {
+                    case Building_Type.House: return "Дом";
+                    case Building_Type.Flat: return "Квартира";
+                    case Building_Type.Room: return "Комната";
+                    default: return "Не определено";
+                }
+            }
+        }
 
-        class DataStorage : DataInterface
+        class DataStorage : Utils, DataInterface
         {
             private List<RawDataItem> rawdata;
             private List<SummaryDataItem> sumdata;
@@ -97,7 +101,6 @@ namespace lr16
                     while ((line = sr.ReadLine()) != null)
                     {
                         string[] items = line.Split(divider);
-                        String typeStr = items[0].Trim();
                         var item = new RawDataItem()
                         {
                             type = ToBuildingType(items[0].Trim()),
@@ -123,7 +126,23 @@ namespace lr16
             private void BuildSummary()
             {
                 sumdata = new List<SummaryDataItem>();
+                Dictionary<Building_Type, long> tmp = new Dictionary<Building_Type, long>();
 
+               foreach (var item in rawdata)
+                {
+                    if (!tmp.ContainsKey(item.type))
+                        tmp.Add(item.type, item.price);
+                    else
+                        tmp[item.type] += item.price;
+                }
+               foreach(var item in tmp)
+                {
+                    sumdata.Add(new SummaryDataItem()
+                    {
+                        bType = item.Key,
+                        typeSum = item.Value
+                    });
+                }
             }
             public static DataStorage DataCreator(String path)
             {
@@ -146,6 +165,29 @@ namespace lr16
                     return sumdata;
                 else
                     return null;
+            }
+        }
+
+        private void btnLoad_Click(object sender, EventArgs e)
+        {
+            openFileDlg.InitialDirectory = Application.StartupPath;
+            if (openFileDlg.ShowDialog() == DialogResult.OK)
+                ShowData(openFileDlg.FileName);
+        }
+        private void ShowData(String datapath)
+        {       
+            try
+            {
+                DataStorage data;
+                data = DataStorage.DataCreator(datapath);
+                dgvRaw.DataSource = data.GetRawData();
+                dgvRaw.ReadOnly = true;
+                dgvSummary.DataSource = data.GetSummaryData();
+                dgvSummary.ReadOnly = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error");
             }
         }
     }
