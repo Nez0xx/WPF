@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31729.503
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{EC134B62-F620-4CD3-903C-194D7233A4C4}"
 	ProjectSection(SolutionItems) = preProject
+		presentationTier\bin\Debug\data.txt = presentationTier\bin\Debug\data.txt
+		presentationTier\bin\Debug\dataEng.txt = presentationTier\bin\Debug\dataEng.txt
 		ref.png = ref.png
 	EndProjectSection
 EndProject
