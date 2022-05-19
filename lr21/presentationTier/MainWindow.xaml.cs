@@ -25,7 +25,7 @@ namespace presentationTier
         {
             try
             {
-                Shop lr21 = new Shop("dataEng.txt");
+                Shop lr21 = new Shop("..\\..\\..\\dataEng.txt");
                 this.DataContext = lr21;
                 InitializeComponent();
             }
