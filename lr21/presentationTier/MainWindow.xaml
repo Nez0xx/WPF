@@ -5,19 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:presentationTier"
         mc:Ignorable="d"
-        Title="Лабораторная работа №21" Height="400" Width="800"
+        Title="Лабораторная работа №21" Height="450" Width="800"
         WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
-            <Style TargetType="TextBox">
-                <Setter Property="ItemsControl.FontSize" Value="20"/>
-                <Setter Property="ItemsControl.FontFamily" Value="Microsoft Sans Serif"/>
-            </Style>
-            <Style TargetType="TextBlock">
-                <Setter Property="ItemsControl.FontSize" Value="20"/>
-                <Setter Property="ItemsControl.FontFamily" Value="Microsoft Sans Serif"/>
-            </Style>
-        </Window.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="ItemsControl.FontSize" Value="20"/>
+            <Setter Property="ItemsControl.FontFamily" Value="Microsoft Sans Serif"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="ItemsControl.FontSize" Value="20"/>
+            <Setter Property="ItemsControl.FontFamily" Value="Microsoft Sans Serif"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+    </Window.Resources>
 
         <Grid>
             <Grid.RowDefinitions>
@@ -41,24 +44,20 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <TextBlock Margin="5" Grid.Row="0" Text="Товарная группа:"/>
-                <TextBox Margin="5" Grid.Row="0" Grid.Column="1"
-                     Text="{Binding itemProductGroup}"/>
-                <TextBlock Margin="5" Grid.Row="1" Text="Наименование:"/>
-                <TextBox Margin="5" Grid.Row="1" Grid.Column="1"
-                     Text="{Binding itemName}"/>
-                <TextBlock Margin="5" Grid.Row="2" Text="Цена:"/>
-                <TextBox Margin="5" Grid.Row="2" Grid.Column="1"
-                     Text="{Binding itemPrice}"/>
-                <TextBlock Margin="5" Grid.Row="3" Text="Склад:"/>
-                <TextBox Margin="5" Grid.Row="3" Grid.Column="1"
-                     Text="{Binding itemWarehouse}"/>
+                <TextBlock Grid.Row="0" Text="Товарная группа:"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Text="{Binding itemProductGroup}"/>
+                <TextBlock Grid.Row="1" Text="Наименование:"/>
+                <TextBox  Grid.Row="1" Grid.Column="1" Text="{Binding itemName}"/>
+                <TextBlock Grid.Row="2" Text="Цена:"/>
+                <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding itemPrice}"/>
+                <TextBlock Grid.Row="3" Text="Склад:"/>
+                <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding itemWarehouse}"/>
             </Grid>
 
             <Grid Grid.Row="1" Name="GridForCollections">
-                <ListBox Name="MainList" ItemsSource="{Binding productGroup, Mode=OneWay}"
+            <ListBox Name="MainList" ItemsSource="{Binding itemList, Mode=OneWay}"
                      DisplayMemberPath="itemVision" Background="WhiteSmoke"
-                     Margin="10"/>
+                     Margin="10" FontSize="16" FontFamily="Microsoft Sans Serif"/>
             </Grid>
 
             <Grid Grid.Row="2" Name="SumGrid">
@@ -69,13 +68,16 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
 
-                <TextBlock Margin="5" Text="Склад с максимальным количеством продукции"
-                       Grid.Column="0" TextWrapping="Wrap"/>
-                <TextBlock Margin="5" Grid.Column="1" 
-                       Text="{Binding Path=MaxInWarehouse, Mode=OneWay}"/>
-                <TextBlock Margin="5" Text="Средняя цена в товарных группах"
-                       Grid.Column="2" TextWrapping="Wrap"/>
-                <ListBox Name="AvgList" Grid.Column="3" BorderThickness="0"/>
+                <TextBlock Text="Склад с максимальным количеством продукции:"
+                           Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="1" FontSize="16" HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Text="{Binding MaxInWarehouse, Mode=OneWay}"/>
+                <TextBlock Text="Средняя цена в товарных группах:"
+                           Grid.Column="2" VerticalAlignment="Center"/>
+                <TextBlock Grid.Column="3" FontSize="16" HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Text="{Binding avgPricePerGroupVision, Mode=OneWay}"/>
             </Grid>
         </Grid>
-    </Window>
+</Window>

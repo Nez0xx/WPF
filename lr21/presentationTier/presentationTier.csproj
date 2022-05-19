@@ -100,5 +100,11 @@
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LogicTier_NF\LogicTier_NF.csproj">
+      <Project>{a912cb53-a53a-4a17-bdd2-2bfdc12f7ffa}</Project>
+      <Name>LogicTier_NF</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

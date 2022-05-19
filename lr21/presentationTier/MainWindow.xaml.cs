@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-//using LogicTier;
+using LogicTier_NF;
 
 namespace presentationTier
 { 
@@ -25,13 +25,13 @@ namespace presentationTier
         {
             try
             {
-                //Shop lr21 = new Shop("data.txt");
-                //this.DataContext = lr21;
+                Shop lr21 = new Shop("data.txt");
+                this.DataContext = lr21;
                 InitializeComponent();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error", ex.Message);
+                MessageBox.Show(ex.Message, "Error");
             }
         }
     }
