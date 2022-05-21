@@ -5,8 +5,48 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:lr20"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Лабораторная работа №20" Height="400" Width="500"
+        WindowStartupLocation="CenterScreen">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Slider Name="sldSrc" Value="24" Maximum="80" Minimum="1"
+                TickFrequency="6" TickPlacement="Both"
+                Grid.Row="0" Margin="5" AutoToolTipPlacement="TopLeft"/>
         
+        <DockPanel Grid.Row="1">
+            <ListBox Name="listClr" DockPanel.Dock="Left" Width="150" SelectedIndex="0">
+                <ListBoxItem Content="Red" Tag="Red"/>
+                <ListBoxItem Content="Green" Tag="Green"/>
+                <ListBoxItem Content="Blue" Tag="Blue"/>
+                <ListBoxItem Content="Black" Tag="Black"/>
+                <Button Name="randomColor" Content="Случайный цвет"  
+                        Click="randomColor_Click" Width="125" Margin="5"/>
+                <Button Name="randomFont" Content="Случайный шрифт"
+                        Click="randomFont_Click" Width="125" Margin="5"/>
+
+            </ListBox>
+
+            <TextBlock Name="txtTarget" DockPanel.Dock="Right"
+                       TextAlignment="Center" VerticalAlignment="Center"
+                       FontSize="{Binding Value, ElementName=sldSrc, Mode=TwoWay}"
+                       Foreground="{Binding ElementName=listClr, Path=SelectedItem.Tag}"
+                       Text="{Binding Text, ElementName=txtTextSrc}"
+                       TextWrapping="Wrap"/>
+        </DockPanel>
+
+        <TextBox Name="txtTextSrc" Text="Введите текст" Grid.Row="2"/>
+        
+        <StackPanel Orientation="Horizontal" Grid.Row="3" HorizontalAlignment="Center">
+            <Button Name="btnNormal" Content="Нормальный размер" Margin="5" 
+                    Width="150" Click="btnNormal_Click"/>
+            <Button Name="btnLarge" Content="Крупный размер" Margin="5"
+                    Width="150" Click="btnLarge_Click"/>
+        </StackPanel>
     </Grid>
 </Window>
